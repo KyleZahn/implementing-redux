@@ -38,8 +38,9 @@ describe('dedux', () => {
 
       it(`dispatch should take any dispatched action and run it 
           through the reducer function to produce a new state.`, () => {
-        const reducer = () => {} // Your reducer function here!
-
+        const reducer = (state, action) => 
+        action.type === 'BAZIFY' ?  { ...state, foo: 'baz' } : { ...state, foo: 'bar' }
+        
         const store = createStore(reducer)
 
         expect(store.getState().foo).toBe('bar')

@@ -29,6 +29,8 @@ export default {
       store.state = reducer(store.state, action);
       // pass updated store to subscriptions
       store.subs.forEach(sub => sub(store.state));
+      // update localStorage with new value
+      localStorage.setItem('count', store.getState().count);
     }
 
     // has to be in createStore in order for tests to pass, ideally would only be in counter.js

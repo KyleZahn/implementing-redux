@@ -3,12 +3,7 @@ const { createStore } = Dedux
 
 const countElement = document.getElementById('count');
 
-const setInitialState = () => {
-    const localCount = localStorage.getItem('count');
-    return { count: localCount ? parseInt(localCount) : 0 };
-};
-
-const reducer = (state = setInitialState(), action) => {
+const reducer = (state = { count: 0 }, action) => {
     switch (action.type) {
         case 'INCREASE':
             return { count: state.count + action.payload.count }

@@ -5,6 +5,16 @@ const { createStore, applyMiddleware } = Dedux
                           TESTS
 ======================================================*/
 describe('dedux', () => {
+  beforeEach(() => {
+    global.localStorage = {
+      setItem(key, item) {
+        return;
+      },
+      getItem (key) { 
+        return;
+      }
+    }
+  })
   describe('createStore', () => {
     it('errors if no reducer function is passed in', () => {
       expect(() => createStore()).toThrow()
